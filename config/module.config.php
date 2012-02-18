@@ -143,13 +143,17 @@ return array(
              * View helper(s)
              */
 
-            'Zend\View\PhpRenderer' => array(
+            'Zend\View\Resolver\TemplatePathStack' => array(
                 'parameters' => array(
                     'options'  => array(
                         'script_paths' => array(
-                            'zfcuser' => __DIR__ . '/../views',
+                            'zfcuser' => __DIR__ . '/../view',
                         ),
                     ),
+                ),
+            ),
+            'Zend\View\PhpRenderer' => array(
+                'parameters' => array(
                     'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
@@ -185,6 +189,7 @@ return array(
                                 'route' => '/user',
                                 'defaults' => array(
                                     'controller' => 'zfcuser',
+                                    'action'     => 'index',
                                 ),
                             ),
                             'may_terminate' => true,

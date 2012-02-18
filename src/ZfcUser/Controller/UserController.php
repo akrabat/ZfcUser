@@ -5,6 +5,7 @@ namespace ZfcUser\Controller;
 use Zend\Mvc\Controller\ActionController,
     Zend\Form\Form,
     Zend\Stdlib\ResponseDescription as Response,
+    Zend\View\Model\ViewModel,
     ZfcUser\Service\User as UserService,
     ZfcUser\Module as ZfcUser;
 
@@ -50,9 +51,9 @@ class UserController extends ActionController
         $form    = $this->getLoginForm();
 
         if (!$request->isPost()) {
-            return array(
+            return new ViewModel(array(
                 'loginForm' => $form,
-            );
+            ));
         }
 
         if (!$form->isValid($request->post()->toArray())) {
@@ -137,9 +138,9 @@ class UserController extends ActionController
                 return $this->redirect()->toRoute('zfcuser/login');
             }
         }
-        return array(
+        return new ViewModel(array(
             'registerForm' => $form,
-        );
+        ));
     }
 
     /**
