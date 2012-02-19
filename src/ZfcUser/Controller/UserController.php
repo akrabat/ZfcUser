@@ -40,6 +40,8 @@ class UserController extends ActionController
         if (!$this->zfcUserAuthentication()->hasIdentity()) {
             return $this->redirect()->toRoute('zfcuser/login'); 
         }
+
+        return new ViewModel();
     }
 
     /**
